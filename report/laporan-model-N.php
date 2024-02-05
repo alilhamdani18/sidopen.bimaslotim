@@ -1,12 +1,12 @@
 <?php
-require 'backend/function.php';
-require 'backend/cek-login.php';
+require '../backend/function.php';
+require '../backend/cek-login.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-<meta charset="utf-8" />
+  <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content="" />
@@ -14,9 +14,9 @@ require 'backend/cek-login.php';
   <title>Sistem Informasi Manajemen Buku Nikah</title>
   <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
-  <link href="assets/css/styles.css" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="shortcut icon" href="img/kemenag.png" type="image/x-icon" />
+  <link href="../assets/css/styles.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="shortcut icon" href="../img/kemenag.png" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -57,7 +57,7 @@ require 'backend/cek-login.php';
         <div class="sb-sidenav-menu">
           <div class="nav">
             <div class="sb-sidenav-menu-heading">Utama</div>
-            <a class="nav-link" href="index.php">
+            <a class="nav-link" href="../index.php">
               <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
               Dashboard
             </a>
@@ -69,8 +69,8 @@ require 'backend/cek-login.php';
             </a>
             <div class="collapse" id="collapseData" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
               <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="data-masuk.php">Data Masuk</a>
-                <a class="nav-link" href="data-keluar.php">Data Keluar</a>
+                <a class="nav-link" href="../data-masuk.php">Data Masuk</a>
+                <a class="nav-link" href="../data-keluar.php">Data Keluar</a>
               </nav>
             </div>
             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLaporan" aria-expanded="false" aria-controls="collapseLaporan">
@@ -89,15 +89,15 @@ require 'backend/cek-login.php';
               </nav>
             </div>
             <div class="sb-sidenav-menu-heading">Extra</div>
-            <a class="nav-link" href="admin.php">
+            <a class="nav-link" href="../admin.php">
               <div class="sb-nav-link-icon"><i class="fa-solid fa-user"></i></div>
               Kelola Admin
             </a>
-            <a class="nav-link" href="tentang.php">
+            <a class="nav-link" href="../tentang.php">
               <div class="sb-nav-link-icon"><i class="fa-solid fa-circle-info"></i></div>
               Tentang
             </a>
-            <a class="nav-link" href="logout.php">
+            <a class="nav-link" href="../backend/logout.php">
               <div class="sb-nav-link-icon"><i class="fa-solid fa-right-from-bracket"></i></div>
               Logout
             </a>
@@ -108,14 +108,14 @@ require 'backend/cek-login.php';
     <div id="layoutSidenav_content">
       <main>
         <div class="container-fluid px-4">
-          <h1 class="mt-4 fw-semibold ">Laporan Model NA</h1>
+          <h1 class="mt-4 fw-semibold ">Laporan Model N</h1>
           <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-            <li class="breadcrumb-item active ">Laporan Model NA</li>
+            <li class="breadcrumb-item"><a href="../index.php">Dashboard</a></li>
+            <li class="breadcrumb-item active ">Laporan Model N</li>
           </ol>
           <div class="card mb-3">
             <div class="card-body">
-              Laporan dibawah ini adalah laporan untuk Model NA
+              Laporan dibawah ini adalah laporan untuk Model N
             </div>
           </div>
           <div class="btn-group mb-4">
@@ -123,19 +123,19 @@ require 'backend/cek-login.php';
               Tambah Data
             </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="data-masuk.php">Data Masuk</a></li>
-              <li><a class="dropdown-item" href="data-keluar.php">Data Keluar</a></li>
+              <li><a class="dropdown-item" href="../data-masuk.php">Data Masuk</a></li>
+              <li><a class="dropdown-item" href="../data-keluar.php">Data Keluar</a></li>
             </ul>
-            <form action="export/export-excel-NA.php" method="post">
+            <form action="../export/export-excel-N.php" method="post">
               <input type="submit" value="Export Ke Excel" name="export_excel" class="btn btn-success">
             </form>
           </div>
 
           <!-- Data Masuk -->
-          <div class="card mb-4">
+          <div class="card mb-4 p-2">
             <div class="card-header d-flex justify-content-between">
               <div>
-                <h4 class="fw-semibold">Laporan Masuk Model NA</h4>
+                <h4 class="fw-semibold">Laporan Masuk Model N</h4>
                 <div class="row my-2 ">
                   <div>
                     <form action="" method="post" class="col d-flex">
@@ -171,13 +171,14 @@ require 'backend/cek-login.php';
                   if (isset($_POST['filter'])) {
                     $tahun = $_POST['tahun'];
                     if ($tahun != 'Tahun') {
-                      $ambilDataMasuk = mysqli_query($conn, "SELECT * FROM tbl_masuk WHERE model = 'NA' AND YEAR(tanggal) = '$tahun'");
+                      $ambilDataMasuk = mysqli_query($conn, "SELECT * FROM tbl_masuk WHERE model = 'N' AND YEAR(tanggal) = '$tahun'");
                     } else {
-                      $ambilDataMasuk = mysqli_query($conn, "SELECT * FROM tbl_masuk WHERE model = 'NA'");
+                      $ambilDataMasuk = mysqli_query($conn, "SELECT * FROM tbl_masuk WHERE model = 'N'");
                     }
                   } else {
-                    $ambilDataMasuk = mysqli_query($conn, "SELECT * FROM tbl_masuk WHERE model = 'NA'");
+                    $ambilDataMasuk = mysqli_query($conn, "SELECT * FROM tbl_masuk WHERE model = 'N'");
                   }
+                  // $ambilDataMasuk = mysqli_query($conn, "SELECT * FROM tbl_masuk WHERE model = 'N'");
                   $No = 1;
                   while ($data = mysqli_fetch_array($ambilDataMasuk)) {
 
@@ -219,10 +220,10 @@ require 'backend/cek-login.php';
 
 
           <!-- Data Keluar -->
-          <div class="card mb-4">
+          <div class="card mb-4 p-2">
             <div class="card-header d-flex justify-content-between">
               <div>
-                <h4 class="fw-semibold">Laporan Keluar Model NA</h4>
+                <h4 class="fw-semibold">Laporan Keluar Model N</h4>
                 <div class="row my-2 ">
                   <div>
                     <form action="" method="post" class="col d-flex">
@@ -258,13 +259,15 @@ require 'backend/cek-login.php';
                   if (isset($_POST['filter'])) {
                     $tahun = $_POST['tahun'];
                     if ($tahun != 'Tahun') {
-                      $ambilDataKeluar = mysqli_query($conn, "SELECT * FROM tbl_keluar WHERE model = 'NA' AND YEAR(tanggal) = '$tahun'");
+                      $ambilDataKeluar = mysqli_query($conn, "SELECT * FROM tbl_keluar WHERE model = 'N' AND YEAR(tanggal) = '$tahun'");
                     } else {
-                      $ambilDataKeluar = mysqli_query($conn, "SELECT * FROM tbl_keluar WHERE model = 'NA'");
+                      $ambilDataKeluar = mysqli_query($conn, "SELECT * FROM tbl_keluar WHERE model = 'N'");
                     }
                   } else {
-                    $ambilDataKeluar = mysqli_query($conn, "SELECT * FROM tbl_keluar WHERE model = 'NA'");
+                    $ambilDataKeluar = mysqli_query($conn, "SELECT * FROM tbl_keluar WHERE model = 'N'");
                   }
+
+                  // $ambilDataKeluar = mysqli_query($conn, "SELECT * FROM tbl_keluar WHERE model = 'N'");
                   $No = 1;
                   while ($data = mysqli_fetch_array($ambilDataKeluar)) {
 
@@ -308,11 +311,11 @@ require 'backend/cek-login.php';
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-  <script src="assets/js/scripts.js"></script>
+  <script src="../assets/js/scripts.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
   <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-  <script src="assets/js/datatables-simple-demo.js"></script>
+  <script src="../assets/js/datatables-simple-demo.js"></script>
   <script>
     $(document).ready(function() {
       $('table.display').DataTable();

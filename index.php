@@ -16,7 +16,6 @@ require 'backend/cek-login.php';
   <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
   <link href="assets/css/styles.css" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
   <link rel="shortcut icon" href="img/kemenag.png" type="image/x-icon" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,7 +47,7 @@ require 'backend/cek-login.php';
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-          <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+          <li><a class="dropdown-item" href="backend/logout.php">Logout</a></li>
         </ul>
       </li>
     </ul>
@@ -82,12 +81,12 @@ require 'backend/cek-login.php';
             </a>
             <div class="collapse" id="collapseLaporan" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
               <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="laporan-model-N.php">Laporan Model N</a>
-                <a class="nav-link" href="laporan-model-NA.php">Laporan Model NA</a>
-                <a class="nav-link" href="laporan-model-NB.php">Laporan Model NB</a>
-                <a class="nav-link" href="laporan-model-R.php">Laporan Model R</a>
-                <a class="nav-link" href="laporan-model-DN.php">Laporan Model DN</a>
-                <a class="nav-link" href="laporan-model-RA.php">Laporan Model RA</a>
+                <a class="nav-link" href="report/laporan-model-N.php">Laporan Model N</a>
+                <a class="nav-link" href="report/laporan-model-NA.php">Laporan Model NA</a>
+                <a class="nav-link" href="report/laporan-model-NB.php">Laporan Model NB</a>
+                <a class="nav-link" href="report/laporan-model-R.php">Laporan Model R</a>
+                <a class="nav-link" href="report/laporan-model-DN.php">Laporan Model DN</a>
+                <a class="nav-link" href="report/laporan-model-RA.php">Laporan Model RA</a>
               </nav>
             </div>
             <div class="sb-sidenav-menu-heading">Extra</div>
@@ -99,7 +98,7 @@ require 'backend/cek-login.php';
               <div class="sb-nav-link-icon"><i class="fa-solid fa-circle-info"></i></div>
               Tentang
             </a>
-            <a class="nav-link" href="logout.php">
+            <a class="nav-link" href="backend/logout.php">
               <div class="sb-nav-link-icon"><i class="fa-solid fa-right-from-bracket"></i></div>
               Logout
             </a>

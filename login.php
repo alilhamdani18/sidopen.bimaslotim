@@ -1,5 +1,5 @@
 <?php
-require 'function.php';
+require 'backend/function.php';
 
 
 // cek login, terdaftar atau tidak
