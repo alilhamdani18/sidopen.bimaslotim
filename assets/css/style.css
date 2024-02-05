@@ -1,0 +1,55 @@
+.login-page {
+  /* box-shadow: 0 0 0 5px; */
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+}
+.login-page,
+.right {
+  border-radius: 25px;
+}
+
+.content {
+  width: 300px;
+}
+.left {
+  display: flex;
+}
+#datatablesSimple tr td,
+.display tr {
+  vertical-align: middle;
+  text-align: center;
+  font-size: 13px;
+}
+.display {
+  font-size: 13px;
+}
+.table {
+  overflow-x: auto !important;
+}
+.action {
+  font-size: 10px;
+}
+
+.modal-body input,
+.modal-body select,
+.modal-body textarea {
+  width: 100%;
+  background-color: #ddd;
+  padding: 0.8rem;
+  border-radius: 5px;
+  border: 1px solid #fff;
+  margin-bottom: 5px;
+}
+
+@media screen and (max-width: 1020px) {
+  .left {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .login-page {
+    background-color: #ffffff;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
