@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 06, 2024 at 04:33 AM
+-- Generation Time: Feb 06, 2024 at 08:35 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -78,8 +78,7 @@ CREATE TABLE `tbl_login` (
 
 INSERT INTO `tbl_login` (`id_user`, `username`, `password`) VALUES
 (1, 'admin simbah 1', 'simbah111'),
-(2, 'admin simbah 2', 'simbah222'),
-(3, 'admin simbah 3', 'simbah333');
+(2, 'admin simbah 2', 'simbah222');
 
 -- --------------------------------------------------------
 
@@ -166,7 +165,7 @@ ALTER TABLE `tbl_stok`
 -- AUTO_INCREMENT for table `tbl_keluar`
 --
 ALTER TABLE `tbl_keluar`
-  MODIFY `id_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT for table `tbl_laporan`
@@ -184,7 +183,7 @@ ALTER TABLE `tbl_login`
 -- AUTO_INCREMENT for table `tbl_masuk`
 --
 ALTER TABLE `tbl_masuk`
-  MODIFY `id_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
+  MODIFY `id_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
 
 --
 -- AUTO_INCREMENT for table `tbl_stok`
