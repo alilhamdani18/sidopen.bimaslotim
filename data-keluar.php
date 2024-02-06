@@ -427,6 +427,9 @@ require 'backend/cek-login.php';
           </div>
         </div>
       </div>
+      <?php
+      include('footer.php');
+      ?>
 
 
 

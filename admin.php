@@ -247,6 +247,9 @@ require 'backend/cek-login.php';
         </div>
     </div>
     </main>
+    <?php
+    include('footer.php');
+    ?>
 
 
     <!-- Modal Form -->

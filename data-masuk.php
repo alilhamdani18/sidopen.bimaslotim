@@ -349,8 +349,11 @@ require 'backend/cek-login.php';
             </div>
           </div>
         </div>
+      </main>
+      <?php
+      include('footer.php');
+      ?>
     </div>
-    </main>
     <!-- Modal Form -->
     <div class="modal fade" id="formTambahDataMasuk">
       <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -427,6 +430,7 @@ require 'backend/cek-login.php';
         </div>
       </div>
     </div>
+
 
 
   </div>
