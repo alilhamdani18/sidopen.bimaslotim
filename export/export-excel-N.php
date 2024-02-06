@@ -38,8 +38,9 @@ if (isset($_POST['export_excel'])) {
       </thead> 
   ';
     $No = 1;
-
+    $total = 0;
     while ($row = mysqli_fetch_array($result)) {
+      $total = $row['banyak_masuk'];
       $output1 .= '
       <tbody>
         <tr style="text-align:center;vertical-align:middle">
@@ -64,7 +65,7 @@ if (isset($_POST['export_excel'])) {
     <tfoot>
         <tr>
           <th colspan="3">Jumlah Total Masuk</th>
-          <th></th>
+          <th>'.$total.'</th>
           <th colspan="8"></th>
         </tr>
       <tfoot>
@@ -103,7 +104,9 @@ if (isset($_POST['export_excel'])) {
       </thead> 
   ';
     $No = 1;
+    $total2 = 0;
     while ($row = mysqli_fetch_array($result2)) {
+      $total2 = $row['banyak_keluar'];
 
       $output2 .= '
       <tbody>
@@ -130,7 +133,7 @@ if (isset($_POST['export_excel'])) {
     <tfoot>
         <tr>
           <th colspan="4">Jumlah Total Keluar</th>
-          <th></th>
+          <th>'.$total2.'</th>
           <th colspan="7"></th>
         </tr>
       <tfoot>

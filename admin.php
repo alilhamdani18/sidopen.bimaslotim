@@ -245,47 +245,12 @@ require 'backend/cek-login.php';
             </div>
           </div>
         </div>
+      </main>
+      <?php
+      include('footer.php');
+      ?>
     </div>
-    </main>
-    <?php
-    include('footer.php');
-    ?>
 
-
-    <!-- Modal Form -->
-    <!-- <div class="modal fade" id="formTambahAdmin">
-      <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content p-3">
-          <div class="modal-header py-2">
-            <h4 class="modal-title fw-bold">Tambah Data Admin</h4>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form action="" method="post">
-              <div class="inputfield">
-                <div>
-                  <label for="username">Username</label>
-                  <input type="text" name="username" id="username" />
-                </div>
-                <div>
-                  <label for="password">Password</label>
-                  <input type="text" name="password" id="password" />
-                </div>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary submit" name="tambahAdmin" value="tambahAdmin">Tambah Data</button>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-
-
-
-
-  </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
   <script src="assets/js/scripts.js"></script>
