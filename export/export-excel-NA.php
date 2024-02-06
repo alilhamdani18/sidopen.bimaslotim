@@ -6,15 +6,20 @@ $output2 = '';
 if (isset($_POST['export_excel'])) {
   $tahun = $_POST['tahun'];
 
+
   $sql = "SELECT * FROM tbl_masuk WHERE model = 'NA' AND YEAR(tanggal) = '$tahun'";
   $sql2 = "SELECT * FROM tbl_keluar WHERE model = 'NA' AND YEAR(tanggal) = '$tahun'";
 
   $result = mysqli_query($conn, $sql);
   $result2 = mysqli_query($conn, $sql2);
+?>
+  <h1 style="text-align:center;vertical-align:middle;text-decoration:underline;background-color:salmon;">REKAPITULASI DATA PENDISTRIBUSIAN BUKU NIKAH MODEL NA TAHUN <?= $tahun; ?></h1>
+<?php
 
   if (mysqli_num_rows($result) > 0) {
     $output1 .= '
-    <h1 style="margin:1rem 0;text-align:center;">Laporan Masuk Model NA</h1>
+    
+    <h2 style="margin:1rem 0;text-align:center;">Laporan Masuk Model NA</h2>
     <table class="table table-bordered" border="1"> 
       <thead class="table-dark">
         <tr>
@@ -75,12 +80,11 @@ if (isset($_POST['export_excel'])) {
     header('Content-Type: application/xls');
     header('Content-Disposition: attachment; filename=laporan-NA.xls');
     echo $output1;
-  } else {
-    header('location:../report/laporan-model-NA.php');
   }
   if (mysqli_num_rows($result2) > 0) {
     $output2 .= '
-    <h1 style="margin:1rem 0;text-align:center;">Laporan Keluar Model NA</h1>
+
+    <h2 style="margin:1rem 0;text-align:center;">Laporan Keluar Model NA</h2>
     <table class="table table-bordered" border="1"> 
       <thead class="table-dark">
         <tr>

@@ -12,9 +12,13 @@ if (isset($_POST['export_excel'])) {
   $result = mysqli_query($conn, $sql);
   $result2 = mysqli_query($conn, $sql2);
 
+?>
+  <h1 style="text-align:center;vertical-align:middle;text-decoration:underline;background-color:salmon;">REKAPITULASI DATA PENDISTRIBUSIAN BUKU NIKAH MODEL NA TAHUN <?= $tahun; ?></h1>
+<?php
+
   if (mysqli_num_rows($result) > 0) {
     $output1 .= '
-    <h1 style="margin:1rem 0;text-align:center;">Laporan Masuk Model RA</h1>
+    <h2 style="margin:1rem 0;text-align:center;">Laporan Masuk Model RA</h2>
     <table class="table table-bordered" border="1"> 
       <thead class="table-dark">
         <tr>
@@ -80,7 +84,7 @@ if (isset($_POST['export_excel'])) {
   }
   if (mysqli_num_rows($result2) > 0) {
     $output2 .= '
-    <h1 style="margin:1rem 0;text-align:center;">Laporan Keluar Model RA</h1>
+    <h2 style="margin:1rem 0;text-align:center;">Laporan Keluar Model RA</h2>
     <table class="table table-bordered" border="1"> 
       <thead class="table-dark">
         <tr>
