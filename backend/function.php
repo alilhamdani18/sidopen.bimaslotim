@@ -15,30 +15,42 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 // }
 
 
-// Menambah data stok baru
-if (isset($_POST['addStok'])) {
-  $model = $_POST['model'];
-  $jmlStok = $_POST['jmlStok'];
+// // Menambah data stok baru
+// if (isset($_POST['addStok'])) {
+//   $model = $_POST['model'];
+//   $jmlStok = $_POST['jmlStok'];
 
-  $addStok = mysqli_query($conn, "INSERT INTO tbl_stok (model, banyak_stok) VALUES ('$model','$jmlStok')");
+//   $addStok = mysqli_query($conn, "INSERT INTO tbl_stok (model, banyak_stok) VALUES ('$model','$jmlStok')");
 
-  if ($addStok) {
-    echo 'Data Berhasil Dimasukkan';
-    header('location:index.php');
-  } else {
-    die("Data Gagal dimasukkan");
-    header('location:index.php');
-  }
-}
+//   if ($addStok) {
+//     echo 'Data Berhasil Dimasukkan';
+//     header('location:index.php');
+//   } else {
+//     die("Data Gagal dimasukkan");
+//     header('location:index.php');
+//   }
+// }
 
-// Refresh Data
-if (isset($_POST['refresh'])) {
+// Edit Deskripsi Model
+if (isset($_POST['editDesc'])) {
   // $id_stok = $_POST['id_stok'];
   $id_stok = $_POST['id_stok'];
   $model = $_POST['model'];
-  $updateDataStok = mysqli_query($conn, "UPDATE tbl_stok SET banyak_stok = 0 WHERE id_stok = $id_stok");
-  if (!$updateDataStok) {
-    die('Gagal' . mysqli_error($conn));
+  $deskripsi = $_POST['deskripsi'];
+
+  $updateDeskripsi = mysqli_query($conn, "UPDATE tbl_stok SET deskripsi = '$deskripsi' WHERE id_stok = $id_stok");
+  if ($updateDeskripsi) {
+    echo '
+        <script>
+          alert(\'Deskripsi Berhasil Diupdate\')
+        </script>';
+    echo 'header(\'location:index.php\')';
+  } else {
+    echo '
+        <script>
+          alert(\'Deskripsi Gagal Diupdate\')
+        </script>';
+    echo 'header(\'location:index.php\')';
   }
 }
 // Menambah data Masuk baru
@@ -100,7 +112,7 @@ if (isset($_POST['addDataKeluar'])) {
     // Tambah Data Keluar
     $addDataKeluar = mysqli_query($conn, "INSERT INTO tbl_keluar (tanggal, uraian, banyak_keluar, model, nomor_seri, satuan, nomor_bukti, Keterangan) VALUES ('$tanggal', '$uraian', '$jmlKeluar', '$model', '$nomorSeri', '$satuan', '$nomorBukti', '$ket')");
 
-     // update stok
+    // update stok
     $updateDataStok = mysqli_query($conn, "UPDATE tbl_stok SET banyak_stok = '$kurangkanData' WHERE model = '$model'");
 
     if ($addDataKeluar && $updateDataStok) {

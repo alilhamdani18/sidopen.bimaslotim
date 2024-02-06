@@ -34,11 +34,11 @@ require 'backend/cek-login.php';
       <h5 class="fw-semibold text-white title-nav d-lg-block d-none">Sistem Informasi Manajemen Buku Nikah</h5>
     </div>
     <!-- <div class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-      <div class="input-group">
-        <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-        <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-      </div>
-    </div> -->
+        <div class="input-group">
+          <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+          <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+        </div>
+      </div> -->
     <div class="ms-auto">
       <p class="text-white m-2 desc-admin d-md-block d-none">Selamat Datang, <span class="text-warning fw-semibold">Admin</span></p>
     </div>
@@ -243,6 +243,7 @@ require 'backend/cek-login.php';
                   <tr>
                     <th>No.</th>
                     <th>Model</th>
+                    <th>Deskripsi</th>
                     <th>Sisa Stok</th>
                     <th>Action</th>
                   </tr>
@@ -254,7 +255,7 @@ require 'backend/cek-login.php';
                   while ($data = mysqli_fetch_array($ambilDataStok)) {
                     // $i = 1;
 
-                    $tanggal = $data['tanggal'];
+                    $deskripsi = $data['deskripsi'];
                     $model = $data['model'];
                     $jmlData = $data['banyak_stok'];
                     $id_stok = $data['id_stok'];
@@ -264,27 +265,32 @@ require 'backend/cek-login.php';
                     <tr>
                       <td><?= $No++; ?></td>
                       <td><?= $model; ?></td>
+                      <td><?= $deskripsi; ?></td>
                       <td><?= $jmlData; ?></td>
                       <td>
-                        <button class="btn btn-primary action" data-bs-toggle="modal" data-bs-target="#refresh<?= $id_stok; ?>"><i class="fa-solid fa-arrows-rotate"></i></button>
+                        <!-- <button class="btn btn-primary action" data-bs-toggle="modal" data-bs-target="#detail<?= $id_stok; ?>"><i class="fa-solid fa-arrows-rotate"></i></button> -->
+                        <button class="btn btn-primary action my-1" data-bs-toggle="modal" data-bs-target="#detail<?= $id_stok; ?>"><i class="fa-solid fa-pen-to-square"></i></button>
+
+
                       </td>
                     </tr>
-                    <div class="modal fade" id="refresh<?= $id_stok; ?>">
-                      <div class="modal-dialog modal-dialog-centered modal-sm">
+                    <div class="modal fade" id="detail<?= $id_stok; ?>">
+                      <div class="modal-dialog modal-dialog-centered modal-md">
                         <div class="modal-content p-2">
                           <div class="modal-header py-2">
-                            <h4 class="modal-title fw-bold">Refresh Data</h4>
+                            <h4 class="modal-title fw-bold">Edit Deskripsi</h4>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
                             <form action="" method="post">
-                              <h6>Refresh Data untuk model <?= $model; ?> ini</h6>
+                              <h6>Edit Deskripsi untuk model <?= $model; ?> ini</h6>
                               <input type="hidden" name="id_stok" value="<?= $id_stok; ?>">
                               <input type="hidden" name="model" value="<?= $model; ?>">
                               <input type="hidden" name="banyak_masuk" value="<?= $banyak_masuk; ?>">
                               <input type="hidden" name="banyak_keluar" value="<?= $banyak_keluar; ?>">
+                              <input type="text" name="deskripsi" value="<?= $deskripsi; ?>">
                               <div class="d-flex justify-content-center mt-3">
-                                <button type="submit" class="btn btn-primary submit" name="refresh">Refresh Data</button>
+                                <button type="submit" class="btn btn-primary submit" name="editDesc">Edit Data</button>
                               </div>
                             </form>
                           </div>
@@ -298,42 +304,6 @@ require 'backend/cek-login.php';
 
                 </tbody>
               </table>
-            </div>
-          </div>
-          <div class="modal fade" id="formDataStok">
-            <div class="modal-dialog modal-dialog-centered modal-lg bg-secondary">
-              <div class="modal-content p-3">
-                <div class="modal-header py-2">
-                  <h4 class="modal-title fw-bold">Tambah Data Masuk</h4>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <form action="" method="post">
-                    <div class="inputfield">
-                      <div class="row">
-                        <div class="col-lg-6">
-                          <label for="model">Model</label>
-                          <select class="half" name="model" id="model">
-                            <option value="">--pilih model--</option>
-                            <option value="N">N</option>
-                            <option value="NA">NA</option>
-                            <option value="NB">NB</option>
-                            <option value="R">R</option>
-                            <option value="DN">DN</option>
-                            <option value="RA">RA</option>
-                          </select>
-                        </div>
-                        <div class="col-lg-6">
-                          <label for="jmlStok">Jumlah Stok</label>
-                          <input type="number" name="jmlStok" id="jmlStok" />
-                        </div>
-                      </div>
-                  </form>
-                </div>
-                <div class="modal-footer d-flex justify-content-center">
-                  <button type="submit" class="btn btn-primary submit" name="addStok" value="addStok">Tambah Data</button>
-                </div>
-              </div>
             </div>
           </div>
         </div>
