@@ -126,8 +126,15 @@ require '../backend/cek-login.php';
               <li><a class="dropdown-item" href="../data-masuk.php">Data Masuk</a></li>
               <li><a class="dropdown-item" href="../data-keluar.php">Data Keluar</a></li>
             </ul>
-            <form action="../export/export-excel-DN.php" method="post">
-              <input type="submit" value="Export Ke Excel" name="export_excel" class="btn btn-success">
+
+            <form action="../export/export-excel-DN.php" method="post" class="col d-flex">
+              <input type="submit" value="Export ke Excel" name="export_excel" class="btn btn-success me-3">
+              <select name="tahun" id="tahun" class="me-3 p-1">
+                <option name="tahun" value="Tahun">Tahun</option>
+                <?php for ($tahun = '2021'; $tahun <= date('Y'); $tahun++) { ?>
+                  <option value="<?= $tahun ?>"><?= $tahun ?></option>
+                <?php } ?>
+              </select>
             </form>
           </div>
 
@@ -136,19 +143,6 @@ require '../backend/cek-login.php';
             <div class="card-header d-flex justify-content-between">
               <div>
                 <h4 class="fw-semibold">Laporan Masuk Model DN</h4>
-                <div class="row my-2 ">
-                  <div>
-                    <form action="" method="post" class="col d-flex">
-                      <select name="tahun" id="tahun" class="me-3">
-                        <option name="tahun" value="Tahun">Tahun</option>
-                        <?php for ($tahun = '2021'; $tahun <= date('Y'); $tahun++) { ?>
-                          <option value="<?= $tahun ?>"><?= $tahun ?></option>
-                        <?php } ?>
-                      </select>
-                      <button type="submit" value="" name="filter" class="btn btn-info">Filter</button>
-                    </form>
-                  </div>
-                </div>
               </div>
             </div>
             <div class="card-body table-responsive">
@@ -168,16 +162,7 @@ require '../backend/cek-login.php';
                 </thead>
                 <tbody>
                   <?php
-                  if (isset($_POST['filter'])) {
-                    $tahun = $_POST['tahun'];
-                    if ($tahun != 'Tahun') {
-                      $ambilDataMasuk = mysqli_query($conn, "SELECT * FROM tbl_masuk WHERE model = 'DN' AND YEAR(tanggal) = '$tahun'");
-                    } else {
-                      $ambilDataMasuk = mysqli_query($conn, "SELECT * FROM tbl_masuk WHERE model = 'DN'");
-                    }
-                  } else {
-                    $ambilDataMasuk = mysqli_query($conn, "SELECT * FROM tbl_masuk WHERE model = 'DN'");
-                  }
+                  $ambilDataMasuk = mysqli_query($conn, "SELECT * FROM tbl_masuk WHERE model = 'DN'");
                   $No = 1;
                   while ($data = mysqli_fetch_array($ambilDataMasuk)) {
 
@@ -220,22 +205,9 @@ require '../backend/cek-login.php';
 
           <!-- Data Keluar -->
           <div class="card mb-4">
-            <div class="card-header d-flex justify-content-between">
+            <div class="card-header d-flex justify-content-between p-3">
               <div>
                 <h4 class="fw-semibold">Laporan Keluar Model DN</h4>
-                <div class="row my-2 ">
-                  <div>
-                    <form action="" method="post" class="col d-flex">
-                      <select name="tahun" id="tahun" class="me-3">
-                        <option name="tahun" value="Tahun">Tahun</option>
-                        <?php for ($tahun = '2021'; $tahun <= date('Y'); $tahun++) { ?>
-                          <option value="<?= $tahun ?>"><?= $tahun ?></option>
-                        <?php } ?>
-                      </select>
-                      <button type="submit" value="" name="filter" class="btn btn-info">Filter</button>
-                    </form>
-                  </div>
-                </div>
               </div>
             </div>
             <div class="card-body table-responsive ">
@@ -255,16 +227,7 @@ require '../backend/cek-login.php';
                 </thead>
                 <tbody>
                   <?php
-                  if (isset($_POST['filter'])) {
-                    $tahun = $_POST['tahun'];
-                    if ($tahun != 'Tahun') {
-                      $ambilDataKeluar = mysqli_query($conn, "SELECT * FROM tbl_keluar WHERE model = 'DN' AND YEAR(tanggal) = '$tahun'");
-                    } else {
-                      $ambilDataKeluar = mysqli_query($conn, "SELECT * FROM tbl_keluar WHERE model = 'DN'");
-                    }
-                  } else {
-                    $ambilDataKeluar = mysqli_query($conn, "SELECT * FROM tbl_keluar WHERE model = 'DN'");
-                  }
+                  $ambilDataKeluar = mysqli_query($conn, "SELECT * FROM tbl_keluar WHERE model = 'DN'");
                   $No = 1;
                   while ($data = mysqli_fetch_array($ambilDataKeluar)) {
 

@@ -4,9 +4,10 @@ require '../backend/function.php';
 $output1 = '';
 $output2 = '';
 if (isset($_POST['export_excel'])) {
+  $tahun = $_POST['tahun'];
 
-  $sql = "SELECT * FROM tbl_masuk WHERE model = 'NA'";
-  $sql2 = "SELECT * FROM tbl_keluar WHERE model = 'NA'";
+  $sql = "SELECT * FROM tbl_masuk WHERE model = 'NA' AND YEAR(tanggal) = '$tahun'";
+  $sql2 = "SELECT * FROM tbl_keluar WHERE model = 'NA' AND YEAR(tanggal) = '$tahun'";
 
   $result = mysqli_query($conn, $sql);
   $result2 = mysqli_query($conn, $sql2);
@@ -60,6 +61,8 @@ if (isset($_POST['export_excel'])) {
     header('Content-Type: application/xls');
     header('Content-Disposition: attachment; filename=laporan-NA.xls');
     echo $output1;
+  } else {
+    header('location:../report/laporan-model-NA.php');
   }
   if (mysqli_num_rows($result2) > 0) {
     $output2 .= '
