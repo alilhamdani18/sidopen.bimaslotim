@@ -61,8 +61,6 @@ if (isset($_POST['export_excel'])) {
     header('Content-Type: application/xls');
     header('Content-Disposition: attachment; filename=laporan-R.xls');
     echo $output1;
-  } else {
-    header('location:../report/laporan-model-R.php');
   }
   if (mysqli_num_rows($result2) > 0) {
     $output2 .= '

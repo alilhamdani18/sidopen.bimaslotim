@@ -38,8 +38,10 @@ if (isset($_POST['export_excel'])) {
       </thead> 
   ';
     $No = 1;
+
     while ($row = mysqli_fetch_array($result)) {
       $output1 .= '
+      <tbody>
         <tr style="text-align:center;vertical-align:middle">
           <td>' . $No++ . '</td>
           <td>' . $row['tanggal'] . '</td>
@@ -54,8 +56,19 @@ if (isset($_POST['export_excel'])) {
           <td></td>
           <td>' . $row['keterangan'] . '</td>
         </tr>
+      </tbody>
    ';
     }
+
+    $output1 .= '
+    <tfoot>
+        <tr>
+          <th colspan="3">Jumlah Total Masuk</th>
+          <th></th>
+          <th colspan="8"></th>
+        </tr>
+      <tfoot>
+    ';
     $output1 .= '</table>';
 
     header('Content-Type: application/xls');
@@ -91,7 +104,9 @@ if (isset($_POST['export_excel'])) {
   ';
     $No = 1;
     while ($row = mysqli_fetch_array($result2)) {
+
       $output2 .= '
+      <tbody>
         <tr style="text-align:center;vertical-align:middle">
           <td>' . $No++ . '</td>
           <td>' . $row['tanggal'] . '</td>
@@ -106,8 +121,20 @@ if (isset($_POST['export_excel'])) {
           <td>' . $row['nomor_bukti'] . '</td>
           <td>' . $row['keterangan'] . '</td>
         </tr>
+      </tbody>
+      
    ';
     }
+
+    $output2 .= '
+    <tfoot>
+        <tr>
+          <th colspan="4">Jumlah Total Keluar</th>
+          <th></th>
+          <th colspan="7"></th>
+        </tr>
+      <tfoot>
+    ';
     $output2 .= '</table>';
 
     header('Content-Type: application/xls');
