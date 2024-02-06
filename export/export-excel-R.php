@@ -65,9 +65,9 @@ if (isset($_POST['export_excel'])) {
     $output1 .= '
     <tfoot>
         <tr>
-          <th colspan="4">Jumlah Total Keluar</th>
+          <th colspan="3">Jumlah Total Masuk</th>
           <th>' . $total . '</th>
-          <th colspan="7"></th>
+          <th colspan="8"></th>
         </tr>
       <tfoot>
     ';
