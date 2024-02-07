@@ -13,7 +13,7 @@ if (isset($_POST['export_excel'])) {
   $result2 = mysqli_query($conn, $sql2);
 
 ?>
-  <h1 style="text-align:center;vertical-align:middle;text-decoration:underline;background-color:salmon;">REKAPITULASI DATA PENDISTRIBUSIAN BUKU NIKAH MODEL R TAHUN <?= $tahun; ?></h1>
+  <h1 style="text-align:center;vertical-align:middle;text-decoration:underline;">REKAPITULASI DATA PENDISTRIBUSIAN BUKU NIKAH MODEL R TAHUN <?= $tahun; ?></h1>
 <?php
 
   if (mysqli_num_rows($result) > 0) {
