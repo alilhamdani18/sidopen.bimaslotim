@@ -1,5 +1,5 @@
 <?php
-require '../backend/function.php';
+require 'backend/function.php';
 
 $output1 = '';
 $output2 = '';

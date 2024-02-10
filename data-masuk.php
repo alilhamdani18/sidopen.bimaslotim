@@ -32,16 +32,16 @@ require 'backend/cek-login.php';
             <div class="card-header">
               <button class="btn btn-primary my-2 " data-bs-toggle="modal" data-bs-target="#formTambahDataMasuk"><i class="fa-solid fa-file-circle-plus"></i> Tambah Data</button>
               <div class="btn-group mx-2">
-                <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                  Laporan Data
+                <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-file-export"></i>
+                  Laporan
                 </button>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="report/laporan-model-N.php">Laporan N</a></li>
-                  <li><a class="dropdown-item" href="report/laporan-model-NA.php">Laporan NA</a></li>
-                  <li><a class="dropdown-item" href="report/laporan-model-NB.php">Laporan NB</a></li>
-                  <li><a class="dropdown-item" href="report/laporan-model-R.php">Laporan R</a></li>
-                  <li><a class="dropdown-item" href="report/laporan-model-DN.php">Laporan DN</a></li>
-                  <li><a class="dropdown-item" href="report/laporan-model-RA.php">Laporan RA</a></li>
+                  <li><a class="dropdown-item" href="laporan-model-N.php">Laporan N</a></li>
+                  <li><a class="dropdown-item" href="laporan-model-NA.php">Laporan NA</a></li>
+                  <li><a class="dropdown-item" href="laporan-model-NB.php">Laporan NB</a></li>
+                  <li><a class="dropdown-item" href="laporan-model-R.php">Laporan R</a></li>
+                  <li><a class="dropdown-item" href="laporan-model-DN.php">Laporan DN</a></li>
+                  <li><a class="dropdown-item" href="laporan-model-RA.php">Laporan RA</a></li>
                 </ul>
               </div>
             </div>

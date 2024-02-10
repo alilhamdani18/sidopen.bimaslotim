@@ -6,25 +6,25 @@ require 'backend/cek-login.php';
 <html lang="en">
 
 <head>
-<?php
+  <?php
   include('dist/head.php');
   ?>
 </head>
 
 <body class="sb-nav-fixed">
-<?php
+  <?php
   include('dist/navbar.php');
   ?>
   <div id="layoutSidenav">
-  <?php
-  include('dist/sidebar.php');
-  ?>
+    <?php
+    include('dist/sidebar.php');
+    ?>
     <div id="layoutSidenav_content">
       <main>
         <div class="container-fluid px-4">
           <h1 class="mt-4 fw-semibold ">Laporan Model NA</h1>
           <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="../index.php">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
             <li class="breadcrumb-item active ">Laporan Model NA</li>
           </ol>
           <div class="card mb-3">
@@ -37,10 +37,10 @@ require 'backend/cek-login.php';
               Tambah Data
             </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="../data-masuk.php">Data Masuk</a></li>
-              <li><a class="dropdown-item" href="../data-keluar.php">Data Keluar</a></li>
+              <li><a class="dropdown-item" href="data-masuk.php">Data Masuk</a></li>
+              <li><a class="dropdown-item" href="data-keluar.php">Data Keluar</a></li>
             </ul>
-            <form action="../export/export-excel-NA.php" method="post" class="col d-flex">
+            <form action="export-excel-NA.php" method="post" class="col d-flex">
               <input type="submit" value="Export ke Excel" name="export_excel" class="btn btn-success me-3">
               <select name="tahun" id="tahun" class="me-3 p-1">
                 <option name="tahun" value="Tahun">Tahun</option>
@@ -187,11 +187,11 @@ require 'backend/cek-login.php';
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-  <script src="../assets/js/scripts.js"></script>
+  <script src="assets/js/scripts.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
   <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-  <script src="../assets/js/datatables-simple-demo.js"></script>
+  <script src="assets/js/datatables-simple-demo.js"></script>
   <script>
     $(document).ready(function() {
       $('table.display').DataTable();

@@ -45,8 +45,8 @@ if (!isset($_SESSION['log'])) {
           <div class="row justify-content-center mt-2 text-center">
             <div class="col-8">
               <img src="img/kemenag.png" width="100" alt="" />
-              <div class="fw-bold fs-2 text-success mt-3">Masuk ke <span class="text-warning">SIMBAH</span></div>
-              <div class="fw-semibold text-success">Sistem Informasi Manajemen Buku Nikah</div>
+              <div class="fw-bold fs-2 text-success mt-3">Masuk ke <span class="text-warning">SIDOPEN</span></div>
+              <div class="fw-semibold text-success">Sistem Informasi Dokumen Pencatatan Nikah</div>
             </div>
           </div>
           <form class="row justify-content-center" method="post">

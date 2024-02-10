@@ -24,7 +24,7 @@ require 'backend/cek-login.php';
         <div class="container-fluid px-4">
           <h1 class="mt-4 fw-semibold ">Laporan Model R</h1>
           <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="../index.php">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
             <li class="breadcrumb-item active ">Laporan Model R</li>
           </ol>
           <div class="card mb-3">
@@ -37,10 +37,10 @@ require 'backend/cek-login.php';
               Tambah Data
             </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="../data-masuk.php">Data Masuk</a></li>
-              <li><a class="dropdown-item" href="../data-keluar.php">Data Keluar</a></li>
+              <li><a class="dropdown-item" href="data-masuk.php">Data Masuk</a></li>
+              <li><a class="dropdown-item" href="data-keluar.php">Data Keluar</a></li>
             </ul>
-            <form action="../export/export-excel-R.php" method="post" class="col d-flex">
+            <form action="export-excel-R.php" method="post" class="col d-flex">
               <input type="submit" value="Export ke Excel" name="export_excel" class="btn btn-success me-3">
               <select name="tahun" id="tahun" class="me-3 p-1">
                 <option name="tahun" value="Tahun">Tahun</option>
