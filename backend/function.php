@@ -398,15 +398,20 @@ if (isset($_POST['hapusAdmin'])) {
 // Upload Berita Acara
 if (isset($_POST['beritaMasuk'])) {
   $nomor = $_POST['nomor'];
-  $judul = $_POST['judul'];
+  $pihak_pertama = $_POST['pihak_pertama'];
+  $pihak_kedua = $_POST['pihak_kedua'];
 
   $file_name = $_FILES['berkas']['name'];
-  $direktori = $_FILES['file/'];
+  $x = explode('.', $file_name);
+  $ekstensiFile = strtolower(end($x));
+  $ukuranFile    = $_FILES['berkas']['size'];
   $file_tmp = $_FILES['berkas']['tmp_name'];
+  // Lokasi Penempatan file
+  $direktori = "file/";
   $linkBerkas = $direktori . $file_name;
 
   $terupload = move_uploaded_file($file_tmp, $linkBerkas);
-  $query = mysqli_query($conn, "INSERT INTO tbl_berita VALUES('$nomor','$judul','$file_name')");
+  $query = mysqli_query($conn, "INSERT INTO tbl_berita set nomor = '$nomor', nama_file = '$file_name', pihak_pertama = '$pihak_pertama', pihak_kedua = '$pihak_kedua', ukuran = '$ukuranFile', ekstensi = '$ekstensiFile', berkas = '$linkBerkas'");
 
   if ($terupload && $query) {
     echo '

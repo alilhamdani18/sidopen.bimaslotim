@@ -38,10 +38,11 @@ require 'backend/cek-login.php';
                   <tr>
                     <th>No.</th>
                     <th>Nomor Surat</th>
-                    <th>Judul</th>
-                    <th>Ukuran</th>
+                    <th>Nama File</th>
+                    <th>Pihak Pertama</th>
+                    <th>Pihak Kedua</th>
                     <th>Type</th>
-                    <th>Berkas</th>
+                    <!-- <th>Berkas</th> -->
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -52,11 +53,11 @@ require 'backend/cek-login.php';
                   while ($data = mysqli_fetch_array($ambilData)) {
                     $id_berita = $data['id_berita'];
                     $nomor = $data['nomor'];
-                    $judul = $data['judul'];
-                    $ukuran = $data['ukuran'];
+                    $nama_file = $data['nama_file'];
+                    $pihak_pertama = $data['pihak_pertama'];
+                    $pihak_kedua = $data['pihak_kedua'];
                     $ekstensi = $data['ekstensi'];
-                    $type = $data['type'];
-                    $berkas = $data['berkas'];
+                    // $berkas = $data['berkas'];
 
 
                   ?>
@@ -65,11 +66,11 @@ require 'backend/cek-login.php';
                       <!-- <td><?= $id_berita; ?></td> -->
                       <td><?= $No++; ?></td>
                       <td><?= $nomor; ?></td>
-                      <td><?= $judul; ?></td>
-                      <td><?= $ukuran; ?></td>
+                      <td><?= $nama_file; ?></td>
+                      <td><?= $pihak_pertama; ?></td>
+                      <td><?= $pihak_kedua; ?></td>
                       <td><?= $ekstensi; ?></td>
-                      <td><?= $type; ?></td>
-                      <td><?= $berkas; ?></td>
+                      <!-- <td><?= $berkas; ?></td> -->
                       <td>
                         <button class="btn btn-success action" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-download"></i></button>
                         <button class="btn btn-primary action my-1" data-bs-toggle="modal" data-bs-target="#editData<?= $id_masuk; ?>"><i class="fa-solid fa-pen-to-square"></i></button>
@@ -257,15 +258,19 @@ require 'backend/cek-login.php';
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form action="" method="POST" id="formBerita" enctype="multipart/form-data">
               <div class="inputfield">
                 <div>
                   <label for="nomor">Nomor Surat</label>
                   <input type="text" name="nomor" id="nomor" />
                 </div>
                 <div>
-                  <label for="judul">Judul</label>
-                  <input type="text" name="judul" id="judul" />
+                  <label for="pihak_pertama">Pihak Pertama</label>
+                  <input type="text" name="pihak_pertama" id="pihak_pertama" />
+                </div>
+                <div>
+                  <label for="pihak_kedua">Pihak Kedua</label>
+                  <input type="text" name="pihak_kedua" id="pihak_kedua" />
                 </div>
                 <div>
                   <label for="berkas">Keterangan</label>
@@ -275,7 +280,7 @@ require 'backend/cek-login.php';
             </form>
           </div>
           <div class="modal-footer d-flex justify-content-center">
-            <input type="submit" class="btn btn-primary submit" name="beritaMasuk" value="Tambah Data">
+            <input type="submit" form="formBerita" class="btn btn-primary submit" name="beritaMasuk" value="Tambah Data">
           </div>
         </div>
       </div>
