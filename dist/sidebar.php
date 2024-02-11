@@ -28,7 +28,7 @@
           <nav class="sb-sidenav-menu-nested nav">
             <a class="nav-link" href="berita-masuk.php">Data Masuk</a>
             <a class="nav-link" href="berita-keluar.php">Data Keluar</a>
-            <a class="nav-link" href="lainnya.php">Lainnya</a>
+            <!-- <a class="nav-link" href="lainnya.php">Lainnya</a> -->
           </nav>
         </div>
         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLaporan" aria-expanded="false" aria-controls="collapseLaporan">

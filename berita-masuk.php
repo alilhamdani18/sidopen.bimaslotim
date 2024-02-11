@@ -48,7 +48,7 @@ require 'backend/cek-login.php';
                 </thead>
                 <tbody>
                   <?php
-                  $ambilData = mysqli_query($conn, "SELECT * FROM tbl_berita");
+                  $ambilData = mysqli_query($conn, "SELECT * FROM tbl_berita_masuk");
                   $No = 1;
                   while ($data = mysqli_fetch_array($ambilData)) {
                     $id_berita = $data['id_berita'];

@@ -90,7 +90,11 @@ require 'backend/cek-login.php';
                       <td><?= $nomor_bukti; ?></td>
                       <td><?= $keterangan; ?></td>
                       <td>
-                        <button class="btn btn-success action" data-bs-toggle="modal" data-bs-target="#readData<?= $id_keluar; ?> "><i class="fa-solid fa-eye"></i></button>
+                      <?php
+                        $file = "file/berita.txt"; //Let say If I put the file name Bang.png
+                        echo "<a class='btn btn-success' style='font-size:13px' href='download-berita.php?nama=" . $file . "'><i class='fa-solid fa-file-arrow-down'></i></a> ";
+                        ?>
+                        <!-- <button class="btn btn-success action" data-bs-toggle="modal" data-bs-target="#readData<?= $id_keluar; ?> "><i class="fa-solid fa-eye"></i></button> -->
                         <button class="btn btn-primary action my-1" data-bs-toggle="modal" data-bs-target="#editData<?= $id_keluar; ?>"><i class="fa-solid fa-pen-to-square"></i></button>
                         <button class="btn btn-danger action" data-bs-toggle="modal" data-bs-target="#hapusData<?= $id_keluar; ?>"><i class="fa-solid fa-trash-can"></i></button>
                       </td>
