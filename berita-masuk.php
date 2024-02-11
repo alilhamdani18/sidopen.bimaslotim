@@ -72,8 +72,8 @@ require 'backend/cek-login.php';
                       <td><?= $ekstensi; ?></td>
                       <!-- <td><?= $berkas; ?></td> -->
                       <td>
-                        <button class="btn btn-success action" data-bs-toggle="modal" data-bs-target="#readData<?= $id_berita; ?>"><i class="fa-solid fa-download"></i></button>
-                        <button class="btn btn-primary action my-1" data-bs-toggle="modal" data-bs-target="#editData<?= $id_berita; ?>"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button class="btn btn-success action m-1" data-bs-toggle="modal" data-bs-target="#readData<?= $id_berita; ?>"><i class="fa-solid fa-download"></i></button>
+                        <!-- <button class="btn btn-primary action my-1" data-bs-toggle="modal" data-bs-target="#editData<?= $id_berita; ?>"><i class="fa-solid fa-pen-to-square"></i></button> -->
                         <button class="btn btn-danger action" data-bs-toggle="modal" data-bs-target="#hapusData<?= $id_berita; ?>"><i class="fa-solid fa-trash-can"></i></button>
                       </td>
                     </tr>
@@ -108,6 +108,8 @@ require 'backend/cek-login.php';
                           <div class="modal-body">
                             <form action="" method="POST" id="formBerita" enctype="multipart/form-data">
                               <div class="inputfield">
+                                <input type="hidden" name="id_berita">
+
                                 <div>
                                   <label for="nomor">Nomor Surat</label>
                                   <input type="text" name="nomor" value="<?= $nomor ?>" id="nomor" />
@@ -121,8 +123,11 @@ require 'backend/cek-login.php';
                                   <input type="text" name="pihak_kedua" value="<?= $pihak_kedua ?>" id="pihak_kedua" />
                                 </div>
                                 <div>
-                                  <label for="berkas">Keterangan</label>
+                                  <label for="berkas">Upload File Berita Acara</label>
                                   <input type="file" autocomplete="off" name="berkas" value="<?= $nama_file ?>" id="berkas" />
+                                </div>
+                                <div class="d-flex justify-content-center my-3">
+                                  <button type="submit" class="btn btn-primary submit" name="editBeritaMasuk">Edit Data</button>
                                 </div>
                               </div>
                             </form>
@@ -142,10 +147,11 @@ require 'backend/cek-login.php';
                           </div>
                           <div class="modal-body">
                             <form action="" method="post">
-                              <h6>Apakah anda yakin ingin menghapus Berita Acara ini ?</h6>
-                              <input type="hidden" name="id_berita" value="">
-                              <div class="d-flex justify-content-center my-3">
-                                <button type="submit" class="btn btn-danger submit" name="hapusDataMasuk">Hapus</button>
+                              <h6>Apakah anda yakin ingin menghapus Berita Acara <?= $nomor; ?> ini ?</h6>
+                              <input type="hidden" name="id_berita" value="<?= $id_berita; ?>">
+                              <div class="d-flex justify-content-center mt-5">
+                                <!-- <a class="btn btn-danger" href="hapus-file.php?name=file/<?php echo $data['nama_file']; ?>">Hapus</a> -->
+                                <button type="submit" class="btn btn-danger submit" name="hapusBeritaMasuk">Hapus</button>
                               </div>
                             </form>
                           </div>
@@ -179,7 +185,7 @@ require 'backend/cek-login.php';
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form action="" method="POST" id="formBerita" enctype="multipart/form-data">
+            <form action="" method="POST" enctype="multipart/form-data">
               <div class="inputfield">
                 <div>
                   <label for="nomor">Nomor Surat</label>
@@ -197,11 +203,11 @@ require 'backend/cek-login.php';
                   <label for="berkas">Keterangan</label>
                   <input type="file" autocomplete="off" name="berkas" id="berkas" />
                 </div>
+                <div class="modal-footer d-flex justify-content-center">
+                  <button type="submit" class="btn btn-primary" name="beritaMasuk" value="Tambah Data">Tambah Data</button>
+                </div>
               </div>
             </form>
-          </div>
-          <div class="modal-footer d-flex justify-content-center">
-            <input type="submit" form="formBerita" class="btn btn-primary submit" name="beritaMasuk" value="Tambah Data">
           </div>
         </div>
       </div>

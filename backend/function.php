@@ -427,3 +427,67 @@ if (isset($_POST['beritaMasuk'])) {
     echo 'header(\'location:berita-masuk.php\')';
   }
 }
+
+
+// Edit Data Berita Masuk
+if (isset($_POST['editBeritaMasuk'])) {
+  $id_berita = $_POST['id_berita'];
+  $nomor = $_POST['nomor'];
+  $pihak_pertama = $_POST['pihak_pertama'];
+  $pihak_kedua = $_POST['pihak_kedua'];
+
+  $file_name = $_FILES['berkas']['name'];
+  $x = explode('.', $file_name);
+  $ekstensiFile = strtolower(end($x));
+  $ukuranFile    = $_FILES['berkas']['size'];
+  $file_tmp = $_FILES['berkas']['tmp_name'];
+  // Lokasi Penempatan file
+  $direktori = "file/";
+  $linkBerkas = $direktori . $file_name;
+
+  $terupload = move_uploaded_file($file_tmp, $linkBerkas);
+  $query = mysqli_query($conn, "INSERT INTO tbl_berita set nomor = '$nomor', nama_file = '$file_name', pihak_pertama = '$pihak_pertama', pihak_kedua = '$pihak_kedua',ukuran = '$ukuranFile', ekstensi = '$ekstensiFile', berkas = '$linkBerkas' WHERE id_berita = '$id_berita'");
+
+  if ($terupload && $query) {
+    echo '
+      <script>
+        alert(\'Data Berhasil Diedit\')
+      </script>';
+    echo 'header(\'location:berita-masuk.php\')';
+  } else {
+    echo '
+      <script>
+        alert(\'Data Gagal Diedit\')
+      </script>';
+    echo 'header(\'location:berita-masuk.php\')';
+  }
+}
+
+
+// Hapus Berita Masuk
+if(isset($_POST['hapusBeritaMasuk'])) {
+  $id_berita = $_POST['id_berita'];
+  
+  $ambilData = mysqli_query($conn, "SELECT * FROM tbl_berita WHERE id_berita = '$id_berita'");
+  $data = mysqli_fetch_assoc($ambilData);
+  $file = $data['nama_file'];
+  if(file_exists("file/$file")) {
+    unlink("file/$file");
+  }
+  
+
+  $query = mysqli_query($conn, "DELETE FROM tbl_berita WHERE id_berita = '$id_berita'");
+  if ($query) {
+    echo '
+      <script>
+        alert(\'Data Berhasil Dihapus\')
+      </script>';
+    echo 'header(\'location:berita-masuk.php\')';
+  } else {
+    echo '
+      <script>
+        alert(\'Data Gagal Dihapus\')
+      </script>';
+    echo 'header(\'location:berita-masuk.php\')';
+  }
+}

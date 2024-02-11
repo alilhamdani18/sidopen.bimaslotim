@@ -1,5 +1,4 @@
 <?php
-//Susunan Struktur File :> $file = 'file/501-862-1-SM.pdf';
 $file = $_GET['url'];
 if (file_exists($file)) {
   header('Content-Description: File Transfer');
