@@ -297,13 +297,77 @@ if (isset($_POST['editKeluar'])) {
           <script>
             alert(\'Data Berhasil Diedit\')
           </script>';
-        echo 'header(\'location:data-masuk.php\')';
+        echo 'header(\'location:data-keluar.php\')';
       } else {
         echo '
           <script>
             alert(\'Data Gagal Diedit\')
           </script>';
-        echo 'header(\'location:data-masuk.php\')';
+        echo 'header(\'location:data-keluar.php\')';
+      }
+    }
+  }
+}
+// Edit Data Kerusakan Barang
+if (isset($_POST['editBarang'])) {
+  // $id_keluar = isset($_POST['id_keluar']) ? $_POST['id_keluar'] : '';
+  $id_barang = $_POST['id_barang'];
+  $tanggal = $_POST['tanggal'];
+  $uraian = $_POST['uraian'];
+  // $banyak_keluar = isset($_POST['jmlKeluar']) ? $_POST['jmlKeluar'] : '';
+  $banyak_barang = $_POST['banyak_barang'];
+  $model = $_POST['model'];
+  $nomor_seri = $_POST['nomorSeri'];
+  $satuan = $_POST['satuan'];
+  $nomor_bukti = $_POST['nomorBukti'];
+  $keterangan = $_POST['ket'];
+
+  $cekStokSekarang = mysqli_query($conn, "SELECT * FROM tbl_stok WHERE model = '$model'");
+  $ambilData = mysqli_fetch_array($cekStokSekarang);
+  $stokSekarang = $ambilData['banyak_stok'];
+
+  $dataBarangSekarang = mysqli_query($conn, "SELECT * FROM tbl_lainnya WHERE id_barang = '$id_barang'");
+  $ambildataBarangSekarang = mysqli_fetch_array($dataBarangSekarang);
+  $dataBarangSekarang = $ambildataBarangSekarang['banyak_barang'];
+
+  if ($stokSekarang >= $banyak_barang) {
+    if ($banyak_barang > $dataBarangSekarang) {
+      $selisih = $banyak_barang - $dataBarangSekarang;
+      $kurangiStok = $stokSekarang - $selisih;
+      $editDataBarang = mysqli_query($conn, "UPDATE tbl_lainnya SET tanggal = '$tanggal', uraian = '$uraian', banyak_barang = '$banyak_barang', model = '$model', nomor_seri = '$nomor_seri', satuan = '$satuan', nomor_bukti = '$nomor_bukti', keterangan = '$keterangan' WHERE id_barang = '$id_barang'");
+      $updateDataStok = mysqli_query($conn, "UPDATE tbl_stok SET banyak_stok = '$kurangiStok' WHERE model = '$model'");
+
+      if ($editDataBarang && $updateDataStok) {
+        echo '
+          <script>
+            alert(\'Data Berhasil Diedit\')
+          </script>';
+        echo 'header(\'location:data-lainnya.php\')';
+      } else {
+        echo '
+          <script>
+            alert(\'Data Gagal Diedit\')
+          </script>';
+        echo 'header(\'location:data-lainnya.php\')';
+      }
+    } else {
+      $selisih = $dataBarangSekarang - $banyak_barang;
+      $tambahStok = $stokSekarang + $selisih;
+      $editDataBarang = mysqli_query($conn, "UPDATE tbl_keluar SET tanggal = '$tanggal', uraian = '$uraian', banyak_barang = '$banyak_barang', model = '$model', nomor_seri = '$nomor_seri', satuan = '$satuan', nomor_bukti = '$nomor_bukti', keterangan = '$keterangan' WHERE id_keluar = '$id_keluar'");
+      $updateDataStok = mysqli_query($conn, "UPDATE tbl_stok SET banyak_stok = '$tambahStok' WHERE model = '$model'");
+
+      if ($editDataBarang && $updateDataStok) {
+        echo '
+          <script>
+            alert(\'Data Berhasil Diedit\')
+          </script>';
+        echo 'header(\'location:data-lainnya.php\')';
+      } else {
+        echo '
+          <script>
+            alert(\'Data Gagal Diedit\')
+          </script>';
+        echo 'header(\'location:data-lainnya.php\')';
       }
     }
   }
@@ -372,6 +436,35 @@ if (isset($_POST['hapusDataKeluar'])) {
         alert(\'Data Gagal Dihapus\')
       </script>';
     echo 'header(\'location:data-keluar.php\')';
+  }
+}
+
+// Hapus Data Kerusakan Barang
+if (isset($_POST['hapusDataBarang'])) {
+  $id_barang = $_POST['id_barang'];
+  $model = $_POST['model'];
+  $banyak_barang = $_POST['banyak_barang'];
+
+  $cekStokSekarang = mysqli_query($conn, "SELECT * FROM tbl_stok WHERE model = '$model'");
+  $ambilData = mysqli_fetch_array($cekStokSekarang);
+  $stokSekarang = $ambilData['banyak_stok'];
+
+  $tambahStok = $stokSekarang + $banyak_barang;
+
+  $hapusBarang = mysqli_query($conn, "DELETE FROM tbl_lainnya WHERE id_barang = '$id_barang'");
+  $updateDataStok = mysqli_query($conn, "UPDATE tbl_stok SET banyak_stok = '$tambahStok' WHERE model = '$model'");
+  if ($hapusBarang && $updateDataStok) {
+    echo '
+      <script>
+        alert(\'Data Berhasil Dihapus\')
+      </script>';
+    echo 'header(\'location:data-lainnya.php\')';
+  } else {
+    echo '
+      <script>
+        alert(\'Data Gagal Dihapus\')
+      </script>';
+    echo 'header(\'location:data-lainnya.php\')';
   }
 }
 
