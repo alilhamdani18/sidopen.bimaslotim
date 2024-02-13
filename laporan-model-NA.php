@@ -178,6 +178,68 @@ require 'backend/cek-login.php';
               </table>
             </div>
           </div>
+          <!-- Data Kerusakan Barang -->
+          <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between">
+              <div>
+                <h4 class="fw-semibold">Laporan Kerusakan Barang Model NA</h4>
+              </div>
+            </div>
+            <div class="card-body table-responsive ">
+              <table id="" class="display" style="width:100%">
+                <thead>
+                  <tr class="text-center align-middle">
+                    <th>No.</th>
+                    <th>Tanggal</th>
+                    <th>Uraian</th>
+                    <th>Banyak Masuk</th>
+                    <th>Model</th>
+                    <th>Nomor Seri</th>
+                    <th>Satuan</th>
+                    <th>Nomor Bukti</th>
+                    <th>Keterangan</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  $ambilDataKeluar = mysqli_query($conn, "SELECT * FROM tbl_lainnya WHERE model = 'NA'");
+                  $No = 1;
+                  while ($data = mysqli_fetch_array($ambilDataKeluar)) {
+
+                    $id_barang = $data['id_barang'];
+                    $tanggal = $data['tanggal'];
+                    $uraian = $data['uraian'];
+                    $banyak_barang = $data['banyak_barang'];
+                    $model = $data['model'];
+                    $nomor_seri = $data['nomor_seri'];
+                    $satuan = $data['satuan'];
+                    $nomor_bukti = $data['nomor_bukti'];
+                    $keterangan = $data['keterangan'];
+
+
+                  ?>
+
+                    <tr class="text-center align-middle">
+                      <td><?= $No++ ?></td>
+                      <td><?= $tanggal; ?></td>
+                      <td><?= $uraian; ?></td>
+                      <td><?= $banyak_barang; ?></td>
+                      <td><?= $model; ?></td>
+                      <td><?= $nomor_seri; ?></td>
+                      <td><?= $satuan; ?></td>
+                      <td><?= $nomor_bukti; ?></td>
+                      <td><?= $keterangan; ?></td>
+                    </tr>
+
+
+                  <?php
+                  }
+
+                  ?>
+                </tbody>
+              </table>
+            </div>
+          </div>
 
         </div>
       </main>

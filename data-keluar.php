@@ -90,8 +90,8 @@ require 'backend/cek-login.php';
                       <td><?= $nomor_bukti; ?></td>
                       <td><?= $keterangan; ?></td>
                       <td>
-                      <?php
-                        $file = "file/berita.txt"; //Let say If I put the file name Bang.png
+                        <?php
+                        $file = "file/Berita Acara.docx";
                         echo "<a class='btn btn-success' style='font-size:13px' href='download-berita.php?nama=" . $file . "'><i class='fa-solid fa-file-arrow-down'></i></a> ";
                         ?>
                         <!-- <button class="btn btn-success action" data-bs-toggle="modal" data-bs-target="#readData<?= $id_keluar; ?> "><i class="fa-solid fa-eye"></i></button> -->

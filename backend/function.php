@@ -135,6 +135,51 @@ if (isset($_POST['addDataKeluar'])) {
     echo 'header(\'location:data-keluar.php\')';
   }
 }
+// Menambah data Kerusakan Barang baru
+if (isset($_POST['addDataBarang'])) {
+  $tanggal = $_POST['tanggal'];
+  $uraian = $_POST['uraian'];
+  $jmlBarang = $_POST['jmlBarang'];
+  $model = $_POST['model'];
+  $nomorSeri = $_POST['nomorSeri'];
+  $satuan = $_POST['satuan'];
+  $nomorBukti = $_POST['nomorBukti'];
+  $ket = $_POST['ket'];
+
+  $cekStokSekarang = mysqli_query($conn, "SELECT * FROM tbl_stok WHERE model = '$model'");
+  $ambilData = mysqli_fetch_array($cekStokSekarang);
+
+  $stokSekarang = $ambilData['banyak_stok'];
+  if ($stokSekarang >= $jmlBarang) {
+    $kurangkanData = $stokSekarang - $jmlBarang;
+
+    // Tambah Data Keluar
+    $addDataBarang = mysqli_query($conn, "INSERT INTO tbl_lainnya (tanggal, uraian, banyak_barang, model, nomor_seri, satuan, nomor_bukti, Keterangan) VALUES ('$tanggal', '$uraian', '$jmlBarang', '$model', '$nomorSeri', '$satuan', '$nomorBukti', '$ket')");
+
+    // update stok
+    $updateDataStok = mysqli_query($conn, "UPDATE tbl_stok SET banyak_stok = '$kurangkanData' WHERE model = '$model'");
+
+    if ($addDataBarang && $updateDataStok) {
+      echo '
+        <script>
+          alert(\'Data Berhasil Ditambahkan\')
+        </script>';
+      echo 'header(\'location:data-lainnya.php\')';
+    } else {
+      echo '
+        <script>
+          alert(\'Data Gagal Ditambahkan\')
+        </script>';
+      echo 'header(\'location:data-lainnya.php\')';
+    }
+  } else {
+    echo '
+      <script>
+        alert(\'Stok tidak mencukupi\')
+      </script>';
+    echo 'header(\'location:data-keluar.php\')';
+  }
+}
 
 
 
