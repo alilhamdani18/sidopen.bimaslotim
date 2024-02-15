@@ -5,18 +5,26 @@ $output1 = '';
 $output2 = '';
 $output3 = '';
 if (isset($_POST['export_excel'])) {
-  $tahun = $_POST['tahun'];
+  $tanggal_awal = $_POST['tanggal_awal'];
+  $tanggal_akhir = $_POST['tanggal_akhir'];
 
+  if($tanggal_awal && $tanggal_akhir != null) {
+    $sql = "SELECT * FROM tbl_masuk WHERE model = 'NB' AND tanggal BETWEEN '$tanggal_awal' AND '$tanggal_akhir'";
+    $sql2 = "SELECT * FROM tbl_keluar WHERE model = 'NB' AND tanggal BETWEEN '$tanggal_awal' AND '$tanggal_akhir'";
+    $sql3 = "SELECT * FROM tbl_lainnya WHERE model = 'NB' AND tanggal BETWEEN '$tanggal_awal' AND '$tanggal_akhir'";
+    
+  } else {
+    $sql = "SELECT * FROM tbl_masuk WHERE model = 'NB'";
+    $sql2 = "SELECT * FROM tbl_keluar WHERE model = 'NB'";
+    $sql3 = "SELECT * FROM tbl_lainnya WHERE model = 'NB'";
 
-  $sql = "SELECT * FROM tbl_masuk WHERE model = 'NB' AND YEAR(tanggal) = '$tahun'";
-  $sql2 = "SELECT * FROM tbl_keluar WHERE model = 'NB' AND YEAR(tanggal) = '$tahun'";
-  $sql3 = "SELECT * FROM tbl_lainnya WHERE model = 'NB' AND YEAR(tanggal) = '$tahun'";
+  }
 
   $result = mysqli_query($conn, $sql);
   $result2 = mysqli_query($conn, $sql2);
   $result3 = mysqli_query($conn, $sql3);
 ?>
-  <h1 style="text-align:center;vertical-align:middle;text-decoration:underline;">REKAPITULASI DATA PENDISTRIBUSIAN BUKU NIKAH MODEL NB TAHUN <?= $tahun; ?></h1>
+  <h1 style="text-align:center;vertical-align:middle;text-decoration:underline;">REKAPITULASI DATA PENDISTRIBUSIAN BUKU NIKAH MODEL NB</h1>
 <?php
 
   if (mysqli_num_rows($result) > 0) {

@@ -33,21 +33,29 @@ require 'backend/cek-login.php';
             </div>
           </div>
           <div class="btn-group mb-4">
-            <button type="button" class="btn btn-primary dropdown-toggle  me-3 " data-bs-toggle="dropdown" aria-expanded="false">
-              Tambah Data
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="data-masuk.php">Data Masuk</a></li>
-              <li><a class="dropdown-item" href="data-keluar.php">Data Keluar</a></li>
-            </ul>
-            <form action="export-excel-RA.php" method="post" class="col d-flex">
-              <input type="submit" value="Export ke Excel" name="export_excel" class="btn btn-success me-3">
+            <form action="export-excel-RA.php" method="post" class="col">
+              <div class="container d-flex gap-2 ">
+                <label for="tanggal_awal">Tanggal Mulai :
+
+                  <input type="date" class="form-control mt-2" name="tanggal_awal" id="tanggal_awal">
+                </label>
+                <label for="tanggal_akhir">Tanggal Akhir :
+
+                  <input type="date" class="form-control mt-2" name="tanggal_akhir" id="tanggal_akhir">
+                </label>
+
+              </div>
+              <div class="container d-flex mt-2 ">
+
+                <input type="submit" value="Export ke Excel" name="export_excel" class="btn btn-success me-3">
+              </div>
+              <!-- <input type="submit" value="Export Ke Excel" name="export_excel" class="btn btn-success me-3">
               <select name="tahun" id="tahun" class="me-3 p-1">
                 <option name="tahun" value="Tahun">Tahun</option>
-                <?php for ($tahun = '2021'; $tahun <= date('Y'); $tahun++) { ?>
+                <?php for ($tahun = '2020'; $tahun <= date('Y'); $tahun++) { ?>
                   <option value="<?= $tahun ?>"><?= $tahun ?></option>
                 <?php } ?>
-              </select>
+              </select> -->
             </form>
           </div>
 

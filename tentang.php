@@ -69,11 +69,11 @@
                       </tr>
                       <tr>
                         <td></td>
-                        <td class="px-3">JL. Profesor Mohamad Yamin, Khusus Kota Selong, Kec. Selong, Kabupaten Lombok Timur, Nusa Tenggara Bar. 83611</td>
+                        <td class="px-3">JL. Profesor Mohamad Yamin, Khusus Kota Selong, Kec. Selong, Kabupaten Lombok Timur, Nusa Tenggara Barat 83611</td>
                       </tr>
-                      <tr>
-                        <td><i class="fa-solid fa-envelope-open-text mt-3"></i></td>
-                        <td class="px-3">kemenaglomboktimur@kemenag.go.id.</td>
+                      <tr class="pt-4">
+                        <td><i class="mt-2 fa-solid fa-envelope-open-text"></i></td>
+                        <td class="mt-4 px-3">kemenaglomboktimur@kemenag.go.id.</td>
                       </tr>
                     </table>
                   </div>
