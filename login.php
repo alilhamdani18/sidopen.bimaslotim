@@ -59,15 +59,6 @@ if (!isset($_SESSION['log'])) {
                 <label for="password" class="form-label">Password</label>
                 <input type="password" name="password" id="password" class="form-control" placeholder="Masukkan Password" />
               </div>
-              <!-- <div class="mb-3 form-group">
-                <a href="register.html" class="text-decoration-none text-primary p-2">Lupa Password ?</a>
-              </div> -->
-              <!-- <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="check" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                  Remember me
-                </label>
-              </div>   -->
             </div>
             <div class="row d-flex flex-column align-items-center justify-content-center">
               <button class="btn btn-primary col-12 col-md-12 col-lg-12 fw-semibold fs-5" name="login">Login</button>

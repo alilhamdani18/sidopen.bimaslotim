@@ -5,7 +5,7 @@ session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "db_simbah";
+$dbname = "db_sidopen";
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 // Testing
@@ -32,7 +32,6 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 
 // Edit Deskripsi Model
 if (isset($_POST['editDesc'])) {
-  // $id_stok = $_POST['id_stok'];
   $id_stok = $_POST['id_stok'];
   $model = $_POST['model'];
   $deskripsi = $_POST['deskripsi'];
@@ -121,6 +120,7 @@ if (isset($_POST['addDataKeluar'])) {
         </script>';
       echo 'header(\'location:data-keluar.php\')';
     } else {
+      die('Data Gagal Ditambahkan' . mysqli_connect_error($conn));
       echo '
         <script>
           alert(\'Data Gagal Ditambahkan\')
@@ -208,7 +208,7 @@ if (isset($_POST['editMasuk'])) {
     $selisih = $banyak_masuk - $dataMasukSekarang;
     $tambahStok = $stokSekarang + $selisih;
     $editMasuk = mysqli_query($conn, "UPDATE tbl_masuk SET tanggal = '$tanggal', uraian = '$uraian', banyak_masuk = '$banyak_masuk', model = '$model', nomor_seri = '$nomor_seri', satuan = '$satuan', nomor_bukti = '$nomor_bukti', keterangan = '$keterangan' WHERE id_masuk = '$id_masuk'");
-    $updateDataStok = mysqli_query($conn, "UPDATE tbl_stok SET banyak_stok = '$tambahStok' WHERE model = '$model'");
+    $updateDataStok = mysqli_query($conn, "UPDATE tbl_stok SET banyak_stok = '$tambahStok' model = '$model' WHERE model = '$model'");
 
     if ($editMasuk && $updateDataStok) {
       echo '
@@ -271,7 +271,7 @@ if (isset($_POST['editKeluar'])) {
       $selisih = $banyak_keluar - $dataKeluarSekarang;
       $kurangiStok = $stokSekarang - $selisih;
       $editKeluar = mysqli_query($conn, "UPDATE tbl_keluar SET tanggal = '$tanggal', uraian = '$uraian', banyak_keluar = '$banyak_keluar', model = '$model', nomor_seri = '$nomor_seri', satuan = '$satuan', nomor_bukti = '$nomor_bukti', keterangan = '$keterangan' WHERE id_keluar = '$id_keluar'");
-      $updateDataStok = mysqli_query($conn, "UPDATE tbl_stok SET banyak_stok = '$kurangiStok' WHERE model = '$model'");
+      $updateDataStok = mysqli_query($conn, "UPDATE tbl_stok SET banyak_stok = '$kurangiStok' model = '$model' WHERE model = '$model'");
 
       if ($editKeluar && $updateDataStok) {
         echo '
@@ -391,6 +391,7 @@ if (isset($_POST['hapusDataMasuk'])) {
   if ($banyak_masuk > $stokSekarang) {
     $updateDataStok = mysqli_query($conn, "UPDATE tbl_stok SET banyak_stok = 0 WHERE model = '$model'");
     $deleteDataKeluar = mysqli_query($conn, "DELETE FROM tbl_keluar WHERE model = '$model'");
+    $deleteDataBarang = mysqli_query($conn, "DELETE FROM tbl_lainnya WHERE model = '$model'");
   } else {
     $updateDataStok = mysqli_query($conn, "UPDATE tbl_stok SET banyak_stok = '$kurangiStok' WHERE model = '$model'");
   }
@@ -634,16 +635,16 @@ if (isset($_POST['editBeritaMasuk'])) {
 
 
 // Hapus Berita Masuk
-if(isset($_POST['hapusBeritaMasuk'])) {
+if (isset($_POST['hapusBeritaMasuk'])) {
   $id_berita = $_POST['id_berita'];
-  
+
   $ambilData = mysqli_query($conn, "SELECT * FROM tbl_berita_masuk WHERE id_berita = '$id_berita'");
   $data = mysqli_fetch_assoc($ambilData);
   $file = $data['nama_file'];
-  if(file_exists("file/$file")) {
+  if (file_exists("file/$file")) {
     unlink("file/$file");
   }
-  
+
 
   $query = mysqli_query($conn, "DELETE FROM tbl_berita WHERE id_berita = '$id_berita'");
   if ($query) {
@@ -661,16 +662,16 @@ if(isset($_POST['hapusBeritaMasuk'])) {
   }
 }
 // Hapus Berita Keluar
-if(isset($_POST['hapusBeritaKeluar'])) {
+if (isset($_POST['hapusBeritaKeluar'])) {
   $id_berita = $_POST['id_berita'];
-  
+
   $ambilData = mysqli_query($conn, "SELECT * FROM tbl_berita_keluar WHERE id_berita = '$id_berita'");
   $data = mysqli_fetch_assoc($ambilData);
   $file = $data['nama_file'];
-  if(file_exists("file/$file")) {
+  if (file_exists("file/$file")) {
     unlink("file/$file");
   }
-  
+
 
   $query = mysqli_query($conn, "DELETE FROM tbl_berita_keluar WHERE id_berita = '$id_berita'");
   if ($query) {

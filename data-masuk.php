@@ -290,16 +290,16 @@ require 'backend/cek-login.php';
                 </div>
                 <div>
                   <label for="uraian">Uraian</label>
-                  <textarea name="uraian" id="uraian" cols="30" rows="3"></textarea>
+                  <textarea name="uraian" id="uraian" cols="30" rows="3" required></textarea>
                 </div>
                 <div>
                   <label for="jmlMasuk">Jumlah Masuk</label>
-                  <input type="number" name="jmlMasuk" id="jmlMasuk" />
+                  <input type="number" name="jmlMasuk" id="jmlMasuk" required />
                 </div>
                 <div class="row">
                   <div class="col-lg-6">
                     <label for="model">Model</label>
-                    <select class="half" name="model" id="model">
+                    <select class="half" name="model" id="model" required>
                       <option value="">--Pilih Model--</option>
                       <?php
                       $ambilDataStok = mysqli_query($conn, "SELECT * FROM tbl_stok");

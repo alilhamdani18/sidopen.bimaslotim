@@ -30,7 +30,7 @@ require 'backend/cek-login.php';
           </ol>
           <div class="card mb-4">
             <div class="card-header">
-              <button class="btn btn-primary my-2 " data-bs-toggle="modal" data-bs-target="#formTambahDataMasuk"><i class="fa-solid fa-file-circle-plus"></i> Tambah Data</button>
+              <button class="btn btn-primary my-2 " data-bs-toggle="modal" data-bs-target="#formTambahDataKeluar"><i class="fa-solid fa-file-circle-plus"></i> Tambah Data</button>
               <div class="btn-group mx-2">
                 <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-file-export"></i>
                   Laporan
@@ -267,7 +267,7 @@ require 'backend/cek-login.php';
         </div>
       </main>
       <!-- Modal Form -->
-      <div class="modal fade" id="formTambahDataMasuk">
+      <div class="modal fade" id="formTambahDataKeluar">
         <div class="modal-dialog modal-dialog-centered modal-lg bg-secondary">
           <div class="modal-content p-3">
             <div class="modal-header py-2">
@@ -283,20 +283,20 @@ require 'backend/cek-login.php';
                   </div>
                   <div>
                     <label for="uraian">Uraian</label>
-                    <textarea name="uraian" id="uraian" cols="30" rows="3"></textarea>
+                    <textarea name="uraian" id="uraian" cols="30" rows="3" required></textarea>
                   </div>
                   <div>
                     <label for="jmlKeluar">Jumlah Keluar</label>
-                    <input type="number" name="jmlKeluar" id="jmlKeluar" />
+                    <input type="number" name="jmlKeluar" id="jmlKeluar" required />
                   </div>
                   <div class="row">
                     <div class="col-lg-6">
                       <label for="model">Model</label>
-                      <select class="half" name="model" id="model">
+                      <select class="half" name="model" id="model" required>
                         <option value="">--Pilih Model--</option>
                         <?php
-                        $ambilDataMasuk = mysqli_query($conn, "SELECT * FROM tbl_stok");
-                        while ($fetchArray = mysqli_fetch_array($ambilDataMasuk)) {
+                        $ambilDataStok = mysqli_query($conn, "SELECT * FROM tbl_stok");
+                        while ($fetchArray = mysqli_fetch_array($ambilDataStok)) {
                           $model = $fetchArray['model'];
 
 

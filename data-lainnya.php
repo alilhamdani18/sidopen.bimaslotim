@@ -23,14 +23,14 @@ require 'backend/cek-login.php';
     <div id="layoutSidenav_content">
       <main>
         <div class="container px-4">
-          <h1 class="mt-4 fw-semibold">Tambah Data Kerusakan Barang</h1>
+          <h1 class="mt-4 fw-semibold">Tambah Data</h1>
           <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-            <li class="breadcrumb-item active">Tambah Data Kerusakan Barang</li>
+            <li class="breadcrumb-item active">Tambah Data</li>
           </ol>
           <div class="card mb-4">
             <div class="card-header">
-              <button class="btn btn-primary my-2 " data-bs-toggle="modal" data-bs-target="#formTambahDataMasuk"><i class="fa-solid fa-file-circle-plus"></i> Tambah Data</button>
+              <button class="btn btn-primary my-2 " data-bs-toggle="modal" data-bs-target="#formTambahData"><i class="fa-solid fa-file-circle-plus"></i> Tambah Data</button>
               <div class="btn-group mx-2">
                 <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-file-export"></i>
                   Laporan
@@ -94,77 +94,17 @@ require 'backend/cek-login.php';
                         $file = "file/Berita Acara.docx";
                         echo "<a class='btn btn-success' style='font-size:13px' href='download-berita.php?nama=" . $file . "'><i class='fa-solid fa-file-arrow-down'></i></a> ";
                         ?>
-                        <!-- <button class="btn btn-success action" data-bs-toggle="modal" data-bs-target="#readData<?= $id_barang; ?> "><i class="fa-solid fa-eye"></i></button> -->
                         <button class="btn btn-primary action my-1" data-bs-toggle="modal" data-bs-target="#editData<?= $id_barang; ?>"><i class="fa-solid fa-pen-to-square"></i></button>
                         <button class="btn btn-danger action" data-bs-toggle="modal" data-bs-target="#hapusData<?= $id_barang; ?>"><i class="fa-solid fa-trash-can"></i></button>
                       </td>
                     </tr>
-                    <!-- readData -->
-                    <div class="modal fade" id="readData<?= $id_barang; ?>">
-                      <div class="modal-dialog modal-dialog-centered modal-lg">
-                        <div class="modal-content p-3">
-                          <div class="modal-header py-2">
-                            <h4 class="modal-title fw-semibold">Details Data Masuk</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            <form action="">
-                              <div class="inputfield">
-                                <div>
-                                  <label for="tanggal">Tanggal</label>
-                                  <input type="date" name="tanggal" value="<?= $tanggal; ?>" disabled id="tanggal" />
-                                </div>
-                                <div>
-                                  <label for="uraian">Uraian</label>
-                                  <textarea name="uraian" disabled id="uraian" cols="30" rows="3"></textarea>
-                                </div>
-                                <div>
-                                  <label for="jmlMasuk">Jumlah Masuk</label>
-                                  <input type="number" name="jmlMasuk" value="<?= $banyak_masuk ?>" disabled id="jmlMasuk" />
-                                </div>
-                                <div class="row">
-                                  <div class="col-lg-6">
-                                    <label for="model">Model</label>
-                                    <select class="half" name="model" disabled id="model">
-                                      <option value="<?= $model; ?>"><?= $model; ?></option>
-                                    </select>
-                                  </div>
-                                  <div class="col-lg-6">
-                                    <label for="nomorSeri">Seri / Nomor</label>
-                                    <input class="half" type="text" name="nomorSeri" value="<?= $nomor_seri ?>" disabled id="nomorSeri" />
-                                  </div>
-                                </div>
-                                <div class="row">
-                                  <div class="col-lg-6">
-                                    <div>
-                                      <label for="satuan">Satuan</label>
-                                      <input type="text" name="satuan" value="<?= $satuan; ?>" disabled id="satuan" />
-                                    </div>
-                                  </div>
-                                  <div class="col-lg-6">
-                                    <div>
-                                      <label for="nomorBukti">Nomor Bukti</label>
-                                      <input type="text" name="nomorBukti" value="<?= $nomor_bukti; ?>" disabled id="nomorBukti" />
-                                    </div>
-                                  </div>
-                                </div>
-                                <div>
-                                  <label for="ket">Keterangan</label>
-                                  <input type="text" name="ket" value="<?= $keterangan; ?>" disabled id="ket" />
-                                </div>
-                              </div>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
 
                     <!-- Edit Data  -->
                     <div class="modal fade" id="editData<?= $id_barang; ?>">
                       <div class="modal-dialog modal-dialog-centered modal-lg">
                         <div class="modal-content p-3">
                           <div class="modal-header py-2">
-                            <h4 class="modal-title fw-bold">Tambah Data Barang</h4>
+                            <h4 class="modal-title fw-bold">Edit Data</h4>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
@@ -235,7 +175,7 @@ require 'backend/cek-login.php';
                       <div class="modal-dialog modal-dialog-centered modal-md">
                         <div class="modal-content p-3">
                           <div class="modal-header py-2">
-                            <h4 class="modal-title fw-bold">Hapus Data Barang</h4>
+                            <h4 class="modal-title fw-bold">Hapus Data</h4>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
@@ -267,11 +207,11 @@ require 'backend/cek-login.php';
         </div>
       </main>
       <!-- Modal Form -->
-      <div class="modal fade" id="formTambahDataMasuk">
+      <div class="modal fade" id="formTambahData">
         <div class="modal-dialog modal-dialog-centered modal-lg bg-secondary">
           <div class="modal-content p-3">
             <div class="modal-header py-2">
-              <h4 class="modal-title fw-bold">Tambah Data Barang</h4>
+              <h4 class="modal-title fw-bold">Tambah Data</h4>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -283,16 +223,16 @@ require 'backend/cek-login.php';
                   </div>
                   <div>
                     <label for="uraian">Uraian</label>
-                    <textarea name="uraian" id="uraian" cols="30" rows="3"></textarea>
+                    <textarea name="uraian" id="uraian" cols="30" rows="3" required></textarea>
                   </div>
                   <div>
                     <label for="jmlBarang">Jumlah Barang</label>
-                    <input type="number" name="jmlBarang" id="jmlBarang" />
+                    <input type="number" name="jmlBarang" id="jmlBarang" required />
                   </div>
                   <div class="row">
                     <div class="col-lg-6">
                       <label for="model">Model</label>
-                      <select class="half" name="model" id="model">
+                      <select class="half" name="model" id="model" required>
                         <option value="">--Pilih Model--</option>
                         <?php
                         $ambilDataMasuk = mysqli_query($conn, "SELECT * FROM tbl_stok");
