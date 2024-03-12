@@ -1,6 +1,7 @@
 <?php
 require 'backend/function.php';
 require 'backend/cek-login.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +40,11 @@ require 'backend/cek-login.php';
                   <?php
                   $ambilDataStokSekarang = mysqli_query($conn, "SELECT banyak_stok FROM tbl_stok WHERE model = 'N'");
                   $data = mysqli_fetch_array($ambilDataStokSekarang);
-                  $jmlStok = $data['banyak_stok'];
+                  if (!is_null($data) && is_array($data) && isset($data[0])) {
+                    $jmlStok = $data['banyak_stok'];
+                  } else {
+                    $jmlStok = 0;
+                  }
 
 
                   ?>
@@ -59,10 +64,13 @@ require 'backend/cek-login.php';
                   <?php
                   $ambilDataStokSekarang = mysqli_query($conn, "SELECT banyak_stok FROM tbl_stok WHERE model = 'NA'");
                   $data = mysqli_fetch_array($ambilDataStokSekarang);
-                  $jmlStok = $data['banyak_stok'];
-
-
+                  if (!is_null($data) && is_array($data) && isset($data[0])) {
+                    $jmlStok = $data['banyak_stok'];
+                  } else {
+                    $jmlStok = 0;
+                  }
                   ?>
+
                   <div><?= $jmlStok; ?></div>
                   <?php
 
@@ -78,7 +86,11 @@ require 'backend/cek-login.php';
                   <?php
                   $ambilDataStokSekarang = mysqli_query($conn, "SELECT banyak_stok FROM tbl_stok WHERE model = 'NB'");
                   $data = mysqli_fetch_array($ambilDataStokSekarang);
-                  $jmlStok = $data['banyak_stok'];
+                  if (!is_null($data) && is_array($data) && isset($data[0])) {
+                    $jmlStok = $data['banyak_stok'];
+                  } else {
+                    $jmlStok = 0;
+                  }
 
 
                   ?>
@@ -100,7 +112,11 @@ require 'backend/cek-login.php';
                   <?php
                   $ambilDataStokSekarang = mysqli_query($conn, "SELECT banyak_stok FROM tbl_stok WHERE model = 'R'");
                   $data = mysqli_fetch_array($ambilDataStokSekarang);
-                  $jmlStok = $data['banyak_stok'];
+                  if (!is_null($data) && is_array($data) && isset($data[0])) {
+                    $jmlStok = $data['banyak_stok'];
+                  } else {
+                    $jmlStok = 0;
+                  }
 
 
                   ?>
@@ -119,7 +135,11 @@ require 'backend/cek-login.php';
                   <?php
                   $ambilDataStokSekarang = mysqli_query($conn, "SELECT banyak_stok FROM tbl_stok WHERE model = 'DN'");
                   $data = mysqli_fetch_array($ambilDataStokSekarang);
-                  $jmlStok = $data['banyak_stok'];
+                  if (!is_null($data) && is_array($data) && isset($data[0])) {
+                    $jmlStok = $data['banyak_stok'];
+                  } else {
+                    $jmlStok = 0;
+                  }
 
 
                   ?>
@@ -138,7 +158,11 @@ require 'backend/cek-login.php';
                   <?php
                   $ambilDataStokSekarang = mysqli_query($conn, "SELECT banyak_stok FROM tbl_stok WHERE model = 'RA'");
                   $data = mysqli_fetch_array($ambilDataStokSekarang);
-                  $jmlStok = $data['banyak_stok'];
+                  if (!is_null($data) && is_array($data) && isset($data[0])) {
+                    $jmlStok = $data['banyak_stok'];
+                  } else {
+                    $jmlStok = 0;
+                  }
 
 
                   ?>

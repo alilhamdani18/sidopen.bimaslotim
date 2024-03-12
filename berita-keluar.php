@@ -48,7 +48,7 @@ require 'backend/cek-login.php';
                 </thead>
                 <tbody>
                   <?php
-                  $ambilData = mysqli_query($conn, "SELECT * FROM tbl_berita_keluar");
+                  $ambilData = mysqli_query($conn, "SELECT * FROM tbl_berita_acara");
                   $No = 1;
                   while ($data = mysqli_fetch_array($ambilData)) {
                     $id_berita = $data['id_berita'];
@@ -97,44 +97,6 @@ require 'backend/cek-login.php';
                       </div>
                     </div>
 
-                    <!-- Edit Data  -->
-                    <div class="modal fade" id="editData<?= $id_berita; ?>">
-                      <div class="modal-dialog modal-dialog-centered modal-lg">
-                        <div class="modal-content p-3">
-                          <div class="modal-header py-2">
-                            <h4 class="modal-title fw-bold">Edit Data Keluar</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            <form action="" method="POST" id="formBerita" enctype="multipart/form-data">
-                              <div class="inputfield">
-                                <input type="hidden" name="id_berita">
-
-                                <div>
-                                  <label for="nomor">Nomor Surat</label>
-                                  <input type="text" name="nomor" value="<?= $nomor ?>" id="nomor" />
-                                </div>
-                                <div>
-                                  <label for="pihak_pertama">Pihak Pertama</label>
-                                  <input type="text" name="pihak_pertama" value="<?= $pihak_pertama ?>" id="pihak_pertama" />
-                                </div>
-                                <div>
-                                  <label for="pihak_kedua">Pihak Kedua</label>
-                                  <input type="text" name="pihak_kedua" value="<?= $pihak_kedua ?>" id="pihak_kedua" />
-                                </div>
-                                <div>
-                                  <label for="berkas">Upload File Berita Acara</label>
-                                  <input type="file" autocomplete="off" name="berkas" value="<?= $nama_file ?>" id="berkas" />
-                                </div>
-                                <div class="d-flex justify-content-center my-3">
-                                  <button type="submit" class="btn btn-primary submit" name="editBeritaKeluar">Edit Data</button>
-                                </div>
-                              </div>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
 
 
                     <!-- Hapus Data  -->

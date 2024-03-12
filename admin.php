@@ -44,7 +44,7 @@ require 'backend/cek-login.php';
                 </thead>
                 <tbody>
                   <?php
-                  $ambilDataAdmin = mysqli_query($conn, "SELECT * FROM tbl_login");
+                  $ambilDataAdmin = mysqli_query($conn, "SELECT * FROM tbl_user");
                   $No = 1;
                   while ($data = mysqli_fetch_array($ambilDataAdmin)) {
                     $id_user = $data['id_user'];

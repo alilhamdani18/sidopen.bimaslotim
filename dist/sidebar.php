@@ -17,21 +17,13 @@
           <nav class="sb-sidenav-menu-nested nav">
             <a class="nav-link" href="data-masuk.php">Data Masuk</a>
             <a class="nav-link" href="data-keluar.php">Data Keluar</a>
-            <a class="nav-link" href="data-lainnya.php">Lainnya</a>
+            <!-- <a class="nav-link" href="data-lainnya.php">Lainnya</a> -->
           </nav>
         </div>
-        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseBerita" aria-expanded="false" aria-controls="collapseBerita">
+        <a class="nav-link" href="berita-keluar.php">
           <div class="sb-nav-link-icon"><i class="fa-solid fa-file-signature"></i></div>
           Berita Acara
-          <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
         </a>
-        <div class="collapse" id="collapseBerita" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-          <nav class="sb-sidenav-menu-nested nav">
-            <a class="nav-link" href="berita-masuk.php">Berita Masuk</a>
-            <a class="nav-link" href="berita-keluar.php">Berita Keluar</a>
-            <a class="nav-link" href="berita-lainnya.php">Lainnya</a>
-          </nav>
-        </div>
         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLaporan" aria-expanded="false" aria-controls="collapseLaporan">
           <div class="sb-nav-link-icon"><i class="fa-solid fa-file-export"></i></div>
           Laporan
@@ -53,10 +45,10 @@
           <div class="sb-nav-link-icon"><i class="fa-solid fa-user"></i></div>
           Kelola Admin
         </a>
-        <a class="nav-link" href="tentang.php">
+        <!-- <a class="nav-link" href="tentang.php">
           <div class="sb-nav-link-icon"><i class="fa-solid fa-circle-info"></i></div>
           Tentang
-        </a>
+        </a> -->
         <a class="nav-link" href="backend/logout.php">
           <div class="sb-nav-link-icon"><i class="fa-solid fa-right-from-bracket"></i></div>
           Logout

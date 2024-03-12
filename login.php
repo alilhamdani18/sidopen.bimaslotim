@@ -8,7 +8,7 @@ if (isset($_POST['login'])) {
   $password = $_POST['password'];
 
   // Cocokkan dengan database
-  $cekdatabase = mysqli_query($conn, "SELECT * FROM tbl_login WHERE username = '$username'and password = '$password'");
+  $cekdatabase = mysqli_query($conn, "SELECT * FROM tbl_user WHERE username = '$username' and password = '$password'");
 
   // hitung jumlah data
   $hitung = mysqli_num_rows($cekdatabase);
